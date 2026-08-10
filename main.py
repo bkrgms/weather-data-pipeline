@@ -1,7 +1,8 @@
 import requests
 
 url = "https://api.open-meteo.com/v1/forecast"
-params = {
+city = "Manisa"
+params = { # dictionary
     "latitude":38.61,
     "longitude":27.43,
     "daily":"temperature_2m_max,temperature_2m_min,precipitation_sum",
@@ -11,13 +12,13 @@ response = requests.get(url,params=params)
 data = response.json()
 
 daily_data = data["daily"]
-
 dates = daily_data["time"]
 max_temps = daily_data["temperature_2m_max"]
 min_temps = daily_data["temperature_2m_min"]
 precipitations = daily_data["precipitation_sum"]
 
-weather_records = []
+
+weather_records = [] #list
 for date,max_temp, min_temp, precipitation in zip(
     dates,
     max_temps,
@@ -28,8 +29,16 @@ for date,max_temp, min_temp, precipitation in zip(
         "date":date,
         "max_temp":max_temp,
         "min_temp":min_temp,
-        "precipitation":precipitation
+        "precipitation":precipitation,
+        "city":city
+        
     }
     weather_records.append(weather_record)
 print(weather_records)
+    
+for record in weather_records:
+    max_temp = record["max_temp"]
+    min_temp = record["min_temp"]
+if max_temp<min_temp:
+    print("Hatali sicaklik verisi")
 
