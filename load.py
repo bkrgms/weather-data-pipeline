@@ -1,11 +1,13 @@
 import psycopg
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 def save_weather_data(weather_records):
     connection = psycopg.connect(
-    dbname="weather_db",
-    user="bekir",
-    host="localhost",
-    port="5432"
+    dbname=os.getenv("DB_NAME"),
+    user=os.getenv("DB_USER"),
+    host=os.getenv("localhost"),
+    port=os.getenv("DB_PORT")
 )
 
     cursor = connection.cursor()
