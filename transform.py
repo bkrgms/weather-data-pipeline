@@ -1,3 +1,5 @@
+import logging
+
 def validate_weather_data(weather_records):
     valid_records = []
     
@@ -7,5 +9,13 @@ def validate_weather_data(weather_records):
 
         if max_temp>min_temp:
             valid_records.append(record)
+        else:
+            logging.warning(
+                "Invalid temperature data: city=%s date=%s max_temp=%s min_temp=%s",
+                record["city"],
+                record["date"],
+                max_temp,
+                min_temp
+            )
         
     return valid_records
