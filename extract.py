@@ -1,4 +1,5 @@
 import requests
+import logging
 
 def get_weather_data():
     url = "https://api.open-meteo.com/v1/forecast"
@@ -37,15 +38,22 @@ def get_weather_data():
         "daily":"temperature_2m_max,temperature_2m_min,precipitation_sum",
         "timezone":"Europe/Istanbul"
     }
-        response = requests.get(url,params=params)
-        data = response.json()
+        try:
+            response = requests.get(url,params=params,timeout=10)
+            response.raise_for_status()
+            data = response.json()
 
-        daily_data = data["daily"]
+        except requests.RequestException as error:
+            logging.error("Weather API requests failed: %s",error)
+            raise    
+
+        daily_data = data.get("daily")
+        if not daily_data:
+            raise ValueError("Weather API response does not contain daily data")
         dates = daily_data["time"]
         max_temps = daily_data["temperature_2m_max"]
         min_temps = daily_data["temperature_2m_min"]
         precipitations = daily_data["precipitation_sum"]
-
 
         for date,max_temp, min_temp, precipitation in zip(
             dates,
@@ -61,5 +69,6 @@ def get_weather_data():
                 "city":city["name"]
             }
             weather_records.append(weather_record)
-    
+    if not weather_records:
+        raise ValueError("Weather API returned no weather records")
     return weather_records

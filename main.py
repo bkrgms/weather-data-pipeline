@@ -11,15 +11,20 @@ logging.basicConfig(
 
 logging.info("Pipeline started.")
 
+try:
+    weather_records = get_weather_data()
+    logging.info("Extract completed. %s records",len(weather_records))
 
-weather_records = get_weather_data()
-logging.info("Extract completed. %s records",len(weather_records))
+    valid_records = validate_weather_data(weather_records)
+    logging.info("Transform completed. %s valid records",len(weather_records))
 
-valid_records = validate_weather_data(weather_records)
-logging.info("Transform completed. %s valid records",len(weather_records))
+    save_weather_data(valid_records)
+    logging.info("Load completed.")
 
-save_weather_data(valid_records)
-logging.info("Load completed. %s Load completed",len(weather_records))
+except Exception as error:
+    logging.error("Pipeline failed %s",error)
+    raise
+
 
 logging.info("Pipeline completed.")
 
