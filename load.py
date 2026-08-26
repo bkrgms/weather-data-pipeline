@@ -9,6 +9,7 @@ def save_weather_data(weather_records):
     db_user = os.getenv("DB_USER")
     db_host = os.getenv("DB_HOST")
     db_port = os.getenv("DB_PORT")
+    db_password = os.getenv("DB_PASSWORD")
 
     if not db_name:
         raise ValueError("DB_NAME environment veriable is missing")
@@ -18,13 +19,16 @@ def save_weather_data(weather_records):
         raise ValueError("DB_HOST environment variable is missing")
     if not db_port:
         raise ValueError("DB_PORT environment variable is missing")
+    if not db_password:
+        raise ValueError("DB_PASSWORD environment veriable is missing")
     
     try:
         connection = psycopg.connect(
             dbname=db_name,
             user=db_user,
             host=db_host,
-            port=db_port
+            port=db_port,
+            password=db_password
         )
 
     except psycopg.Error as error:

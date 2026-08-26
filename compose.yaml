@@ -1,0 +1,35 @@
+services:
+  db:
+    image: postgres:16
+
+    ports:
+        - "5432:5432"
+
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data 
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    
+    healthcheck:
+      test: ["CMD-SHELL","pg_isready -U bekir -d weather_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  app:
+    build: .
+    env_file:
+    - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+
+volumes:
+  postgres_data:
