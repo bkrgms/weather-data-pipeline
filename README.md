@@ -94,7 +94,7 @@ weather-data-pipeline/
 │   ├── init.sql
 │   └── analytics.sql
 ├── docs/
-│   └── knime_bar_chart_configuration.png
+│   └── knime_bar_chart_result.png
 ├── Dockerfile
 ├── compose.yaml
 ├── .dockerignore
@@ -184,7 +184,7 @@ The PostgreSQL output is also explored in KNIME using a visual workflow:
 
 The query returns `city`, `avg_max_temp`, and `total_precipitation`. The chart uses `city` as the category and `avg_max_temp` as the value.
 
-![KNIME Bar Chart configuration](docs/knime_bar_chart_configuration.png)
+![KNIME Bar Chart result](docs/knime_bar_chart_result.png)
 
 ## Environment Variables
 
