@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700">
+<rect width="1200" height="700" fill="#f7f9fc"/>
+<rect x="40" y="30" width="1120" height="640" rx="18" fill="white" stroke="#dbe3ee" stroke-width="2"/>
+<text x="80" y="85" font-family="Arial" font-size="28" font-weight="700" fill="#172b4d">Weather Data Pipeline — KNIME / PostgreSQL Analysis</text>
+<text x="80" y="120" font-family="Arial" font-size="16" fill="#64748b">SQL aggregation executed through KNIME DB Query Reader · 35 observations · 5 cities</text>
+<g font-family="Arial"><rect x="80" y="155" width="240" height="62" rx="12" fill="#e8f1ff" stroke="#2f80ed" stroke-width="2"/><text x="200" y="193" text-anchor="middle" font-size="18" font-weight="700" fill="#1b4f8a">PostgreSQL Connector</text><path d="M320 186 H390" stroke="#64748b" stroke-width="3" marker-end="url(#a)"/><rect x="390" y="155" width="240" height="62" rx="12" fill="#e9f8ef" stroke="#27ae60" stroke-width="2"/><text x="510" y="193" text-anchor="middle" font-size="18" font-weight="700" fill="#176b3a">DB Query Reader</text><path d="M630 186 H700" stroke="#64748b" stroke-width="3" marker-end="url(#a)"/><rect x="700" y="155" width="240" height="62" rx="12" fill="#fff4df" stroke="#f2994a" stroke-width="2"/><text x="820" y="193" text-anchor="middle" font-size="18" font-weight="700" fill="#9a5a16">Table View / Chart</text></g>
+<line x1="120" y1="580" x2="1080" y2="580" stroke="#94a3b8"/><line x1="120" y1="290" x2="120" y2="580" stroke="#94a3b8"/>
+<text x="50" y="310" font-family="Arial" font-size="14" fill="#64748b" transform="rotate(-90 50 310)">Average max temperature (°C)</text>
+<text x="530" y="625" font-family="Arial" font-size="15" fill="#475569">City</text>
+<g font-family="Arial" font-size="15" fill="#334155"><text x="180" y="610">Izmir</text><text x="370" y="610">Manisa</text><text x="560" y="610">Bursa</text><text x="750" y="610">Istanbul</text><text x="960" y="610">Ankara</text></g>
+<g fill="#2f80ed"><rect x="155" y="344" width="85" height="236" rx="5"/><rect x="345" y="353" width="85" height="227" rx="5"/><rect x="535" y="355" width="85" height="225" rx="5"/><rect x="725" y="384" width="85" height="196" rx="5"/><rect x="935" y="425" width="85" height="155" rx="5"/></g>
+<g font-family="Arial" font-size="16" font-weight="700" fill="#1b4f8a"><text x="197" y="333" text-anchor="middle">20.3°C</text><text x="387" y="342" text-anchor="middle">19.5°C</text><text x="577" y="344" text-anchor="middle">19.3°C</text><text x="767" y="373" text-anchor="middle">16.9°C</text><text x="977" y="414" text-anchor="middle">13.3°C</text></g>
+<g font-family="Arial" font-size="14" fill="#64748b"><text x="950" y="250">Query result:</text><text x="950" y="275">AVG(max_temp), SUM(precipitation)</text><text x="950" y="300">GROUP BY city</text></g>
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#64748b"/></marker></defs>
+</svg>
