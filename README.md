@@ -78,6 +78,7 @@ Docker Compose runs the application and PostgreSQL as separate containers:
 - uv
 - Docker
 - Docker Compose
+- KNIME Analytics Platform
 - Git
 - GitHub
 
@@ -92,6 +93,8 @@ weather-data-pipeline/
 ├── sql/
 │   ├── init.sql
 │   └── analytics.sql
+├── docs/
+│   └── knime_bar_chart_configuration.png
 ├── Dockerfile
 ├── compose.yaml
 ├── .dockerignore
@@ -170,6 +173,18 @@ The `sql/analytics.sql` file contains analytical queries using concepts such as:
 - window functions
 - rolling averages
 - city-level comparisons
+
+## KNIME Analytics Workflow
+
+The PostgreSQL output is also explored in KNIME using a visual workflow:
+
+1. Connect to the Dockerized PostgreSQL database with the PostgreSQL Connector node.
+2. Use DB Query Reader to aggregate weather data by city with SQL.
+3. Send the results to a Bar Chart (JavaScript) node to compare average maximum temperatures across cities.
+
+The query returns `city`, `avg_max_temp`, and `total_precipitation`. The chart uses `city` as the category and `avg_max_temp` as the value.
+
+![KNIME Bar Chart configuration](docs/knime_bar_chart_configuration.png)
 
 ## Environment Variables
 
