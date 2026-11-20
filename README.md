@@ -184,7 +184,7 @@ The PostgreSQL output is also explored in KNIME using a visual workflow:
 
 The query returns `city`, `avg_max_temp`, and `total_precipitation`. The chart uses `city` as the category and `avg_max_temp` as the value.
 
-![KNIME Bar Chart result](docs/knime_bar_chart_result.png)
+![KNIME Bar Chart result](https://raw.githubusercontent.com/bkrgms/weather-data-pipeline/10edc60/docs/knime_bar_chart_result.png)
 
 ## Environment Variables
 
